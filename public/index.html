@@ -40,8 +40,9 @@
       </svg>
     </button>
     <span class="clock">
-      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="m9 12 2 2 4-4"/>
       </svg>
       <span id="clock-text">00:00:00</span>
     </span>
@@ -95,8 +96,6 @@
 
         <p class="disclaimer">Der Studierendenausweis ist nur in Verbindung mit einem gültigen Identifikationsnachweis gültig.</p>
       </article>
-
-      <div class="dots"><i class="on"></i></div>
     </section>
 
     <section id="empty" class="empty" hidden>
@@ -113,7 +112,11 @@
       <span>Startseite</span>
     </button>
     <button class="tabbar-item is-active">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19"/></svg>
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2.5" y="6" width="19" height="13" rx="2.5"/>
+        <path d="M16 10h5.5v5H16a2.5 2.5 0 0 1 0-5z"/>
+        <circle cx="17.5" cy="12.5" r="0.75" fill="currentColor"/>
+      </svg>
       <span>Wallet</span>
     </button>
   </nav>
@@ -131,11 +134,11 @@
   <form class="sheet-body" id="form" autocomplete="off">
     <label>Vorname<input name="vorname" type="text"></label>
     <label>Nachname<input name="nachname" type="text"></label>
-    <label>Geburtsdatum<input name="geburtsdatum" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ"></label>
+    <label>Geburtsdatum<input name="geburtsdatum" type="date"></label>
     <label>Matrikelnummer<input name="matrikelnummer" type="text" inputmode="numeric"></label>
     <label>Hörerstatus<input name="hoererstatus" type="text"></label>
-    <label>Gültig von<input name="gueltigVon" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ"></label>
-    <label>Gültig bis<input name="gueltigBis" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ"></label>
+    <label>Gültig von<input name="gueltigVon" type="date"></label>
+    <label>Gültig bis<input name="gueltigBis" type="date"></label>
     <button type="button" class="reset-btn" id="reset">Zurücksetzen</button>
   </form>
 </div>

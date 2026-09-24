@@ -123,10 +123,26 @@
   const sheet = $('sheet');
   const backdrop = $('backdrop');
   const form = $('form');
+  const DATE_FIELDS = new Set(['geburtsdatum', 'gueltigVon', 'gueltigBis']);
+
+  function toISODate(s) {
+    const m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || ''));
+    if (!m) return '';
+    return `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`;
+  }
+
+  function toDEDate(s) {
+    const m = /^\s*(\d{4})-(\d{2})-(\d{2})\s*$/.exec(String(s || ''));
+    if (!m) return s || '';
+    return `${m[3]}.${m[2]}.${m[1]}`;
+  }
 
   function openSheet() {
     for (const [k, v] of Object.entries(data)) {
-      if (form.elements[k]) form.elements[k].value = v;
+      const el = form.elements[k];
+      if (el) {
+        el.value = DATE_FIELDS.has(k) ? toISODate(v) : v;
+      }
     }
     sheet.hidden = false;
     backdrop.hidden = false;
@@ -145,7 +161,10 @@
   $('save').addEventListener('click', () => {
     for (const k of Object.keys(DEFAULTS)) {
       const el = form.elements[k];
-      if (el) data[k] = el.value.trim();
+      if (el) {
+        const val = el.value.trim();
+        data[k] = DATE_FIELDS.has(k) ? toDEDate(val) : val;
+      }
     }
     save();
     tab = bucket();          // follow the card if the dates moved it
@@ -160,7 +179,10 @@
     data = { ...DEFAULTS };
     save();
     for (const [k, v] of Object.entries(data)) {
-      if (form.elements[k]) form.elements[k].value = v;
+      const el = form.elements[k];
+      if (el) {
+        el.value = DATE_FIELDS.has(k) ? toISODate(v) : v;
+      }
     }
     render();
   });
