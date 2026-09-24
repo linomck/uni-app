@@ -175,6 +175,19 @@
   $('cancel').addEventListener('click', closeSheet);
   backdrop.addEventListener('click', closeSheet);
 
+  const btnRandMatrikel = $('btn-rand-matrikel');
+  if (btnRandMatrikel) {
+    btnRandMatrikel.addEventListener('click', () => {
+      const rand9 = Math.floor(Math.random() * 1e9).toString().padStart(9, '0');
+      const num = '108' + rand9;
+      const el = form.elements['matrikelnummer'];
+      if (el) {
+        el.value = num;
+        el.focus();
+      }
+    });
+  }
+
   $('reset').addEventListener('click', () => {
     data = { ...DEFAULTS };
     save();

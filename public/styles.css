@@ -373,6 +373,34 @@ html:not([data-theme="dark"]) .moon-icon { display: none !important; }
 }
 .sheet-body input:focus { outline: 2px solid #0a84ff33; border-color: #0a84ff; }
 
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+.input-row input {
+  flex: 1;
+  min-width: 0;
+}
+.field-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  background: var(--input-bg);
+  border: .5px solid var(--hair);
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--tabbar-active);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .15s ease, transform .1s ease, background-color .15s ease;
+}
+.field-btn:active {
+  opacity: .7;
+  transform: scale(.98);
+}
+
 .reset-btn {
   margin-top: 6px;
   padding: 11px;
