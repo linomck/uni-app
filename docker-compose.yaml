@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  ausweis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ausweis-ap:latest
+    container_name: ausweis-ap
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.ausweis.rule=Host(`uni.n2nd.de`)"
+      - "traefik.http.routers.ausweis.entrypoints=websecure"
+      - "traefik.http.routers.ausweis.tls=true"
+      - "traefik.http.routers.ausweis.tls.certresolver=le"
+      - "traefik.http.services.ausweis.loadbalancer.server.port=80"
+
+networks:
+  proxy:
+    external: true
