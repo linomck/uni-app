@@ -135,10 +135,10 @@
     <label>Vorname<input name="vorname" type="text"></label>
     <label>Nachname<input name="nachname" type="text"></label>
     <label>Geburtsdatum<input name="geburtsdatum" type="date"></label>
-    <label>
-      Matrikelnummer
+    <div class="field-group">
+      <label for="in-matrikel">Matrikelnummer</label>
       <div class="input-row">
-        <input name="matrikelnummer" type="text" inputmode="numeric" maxlength="12">
+        <input id="in-matrikel" name="matrikelnummer" type="text" inputmode="numeric" maxlength="12">
         <button type="button" class="field-btn" id="btn-rand-matrikel" title="Zufällige 12-stellige Matrikelnummer generieren" aria-label="Zufällige Matrikelnummer generieren">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
@@ -146,7 +146,7 @@
           <span>Zufall</span>
         </button>
       </div>
-    </label>
+    </div>
     <label>Hörerstatus<input name="hoererstatus" type="text"></label>
     <label>Gültig von<input name="gueltigVon" type="date"></label>
     <label>Gültig bis<input name="gueltigBis" type="date"></label>

@@ -177,15 +177,27 @@
 
   const btnRandMatrikel = $('btn-rand-matrikel');
   if (btnRandMatrikel) {
-    btnRandMatrikel.addEventListener('click', () => {
+    let lastGen = 0;
+    const generate = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const now = Date.now();
+      if (now - lastGen < 200) return;
+      lastGen = now;
+
       const rand9 = Math.floor(Math.random() * 1e9).toString().padStart(9, '0');
       const num = '108' + rand9;
-      const el = form.elements['matrikelnummer'];
+      const el = form.elements['matrikelnummer'] || $('in-matrikel');
       if (el) {
         el.value = num;
-        el.focus();
+        el.dispatchEvent(new Event('input', { bubbles: true }));
       }
-    });
+    };
+
+    btnRandMatrikel.addEventListener('pointerdown', generate);
+    btnRandMatrikel.addEventListener('click', generate);
   }
 
   $('reset').addEventListener('click', () => {

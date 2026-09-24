@@ -1,4 +1,4 @@
-const CACHE = 'ausweis-v12';
+const CACHE = 'ausweis-v13';
 const ASSETS = [
   './',
   'index.html',
